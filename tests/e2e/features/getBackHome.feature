@@ -1,7 +1,7 @@
 Feature: navigation to Home Page
     As a user
-    I want to navigate back to home page from a details page
-    So that I can return to the main page easily
+    I want to see all the drinks available in home page
+    So that I can choose one to drink
 
 
     Scenario: navigation from details page to home page
