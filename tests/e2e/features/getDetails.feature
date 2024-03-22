@@ -10,3 +10,4 @@ Feature: cocktail details
         Then the result should match the following data
             | Name | Category | Info      | Glass      | Intructions              | Ingredients                            |
             | ABC  | Shot     | Alcoholic | Shot glass | Layered in a Shot glass. | Amaretto, Baileys irish cream, Cognac, |
+
