@@ -1,4 +1,4 @@
-Feature: navigation from Details Page to Home Page
+Feature: navigation to home page
     As a user
     I want to navigate back to home page from a details page
     So that I can return to the main page easily
