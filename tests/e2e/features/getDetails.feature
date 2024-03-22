@@ -1,4 +1,4 @@
-Feature: cocktail drink details
+Feature: cocktail details
     As a user
     I want to get details of a particular cocktail on the website
     So that I can know what I'm going to drink easily
