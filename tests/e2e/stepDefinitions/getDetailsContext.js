@@ -17,18 +17,18 @@ const detailsButtonSelector = 'div.flex div a[href="/cocktail/13501"]'
  Then('the result should match the following data',async function (dataTable) {
    
    //  // Extracting data from the webpage
-   const cocktailName = await page.innerText('#root > div > div > div > div > div:nth-child(1) > h2');
-   const category = await page.innerText('#root > div > div > div > div > div:nth-child(2) > h2');
-   const info = await page.innerText('#root > div > div > div > div > div:nth-child(3) > h2');
-   const glass = await page.innerText('#root > div > div > div > div > div:nth-child(4) > h2');
-   const instructions = await page.innerText('#root > div > div > div > div > div:nth-child(5) > h2');
-   const ingredients = await page.innerText('#root > div > div > div > div > div:nth-child(6) > h2')
-   
+   const cocktailName = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(1) > h2');
+   const category = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(2) > h2');
+   const info = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(3) > h2');
+   const glass = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(4) > h2');
+   const instructions = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(5) > h2');
+   const ingredients = await page.innerText('div.flex.flex-col.space-y-4.mt-4 > div:nth-child(6) > h2')
 
-   //  Extracting expected values from the dataTable
+
+    // Extracting expected values from the dataTable
     const expectedData = dataTable.hashes();
 
-   //  Asserting the retrieved data with the expected values
+  //  //  Asserting the retrieved data with the expected values
    expect(cocktailName).toEqual(expectedData[0].Name);
    expect(category).toEqual(expectedData[0].Category);
    expect(info).toEqual(expectedData[0].Info);
