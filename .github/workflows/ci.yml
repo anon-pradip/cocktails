@@ -1,0 +1,40 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: |
+          npm install
+          npm run lint
+
+  ui-test:
+    needs: eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: run-cocktail
+        run: |
+          npm install
+          npm run dev &
+      - name: run-ui-test
+        working-directory: tests
+        run: |
+          npm install
+          npx playwright install chromium
+          npm run test:e2e
