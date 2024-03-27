@@ -5,7 +5,7 @@ const Error = () => {
   return (
     <div className="flex flex-col mt-7 space-y-7 items-center">
       <h1 className="uppercase text-black font-extrabold tracking-[5px] ">
-        Oops! It's a dead end
+        Oops! Its a dead end
       </h1>
       <Link
         to="/"

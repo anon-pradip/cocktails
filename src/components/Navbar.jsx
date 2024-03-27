@@ -5,14 +5,10 @@ let activeStyle = {
   color: "blue",
 };
 
-let activeStyleHome = {
-  color: "red",
-};
 let activeStyleAbout = {
   color: "green",
 };
 
-let activeClassName = "blue";
 
 const Navbar = () => {
   return (
