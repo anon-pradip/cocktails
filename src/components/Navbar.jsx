@@ -2,13 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 let activeStyle = {
-  color: "blue",
+  color: "blue"
 };
 
 let activeStyleAbout = {
-  color: "green",
+  color: "green"
 };
-
 
 const Navbar = () => {
   return (
