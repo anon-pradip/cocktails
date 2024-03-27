@@ -12,6 +12,7 @@ Given('user is on the details page of a cocktail {string}', async function (cock
   await expect(locator).toBeVisible()
 });
 
+
 When('the user returns to home page', function () {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
