@@ -26,6 +26,9 @@
       "react": {
         "version": "detect"
       }
+    },
+    "globals": {
+      "page": "readonly"
     }
   }
   
