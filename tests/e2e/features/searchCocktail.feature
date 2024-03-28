@@ -4,7 +4,7 @@ Feature: searching for cocktails
     So that I can find what I'm looking for easily
 
     Background: 
-        Given user has navigated to home page
+        Given the user has navigated to home page
 
 
     Scenario: user searches for a cocktail

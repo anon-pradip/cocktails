@@ -5,7 +5,7 @@ Feature: cocktail details
 
 
     Scenario: retrieve details of a cocktail
-        Given user has navigated to home page
+        Given the user has navigated to home page
         When the user views details of cocktail 'ABC'
         Then the result should match the following data
             | Name | Category | Info      | Glass      | Intructions              | Ingredients                            |
