@@ -1,29 +1,28 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
+const { HomePage } = require("../pageObjects/homePage");
 
-const url = "http://localhost:8080/";
-const home = '//nav/div[1]/a[@href="/"]';
-const name = "#name";
-// const notMatched = "//div/h2"; 
-const notMatched = 'div>h2' 
-const cocktailName = "//div/div[last()]/h1";
+const nameSelector = "#name";
+const notMatchedSelector = "div>h2";
+const cocktailNameSelector = "//div/div[last()]/h1";
 
-Given("the user has navigated to the home page", async function () {
-  await page.goto(url);
-  const locator = await page.locator(home);
+const homePage = new HomePage();
+
+Given("the user has navigated to the home page", async () => {
+  const locator = await homePage.navigateToHomePage();
   await expect(locator).toBeVisible();
 });
 
-When("the user searches for cocktail {string}", async function (cocktail) {
-  await page.fill(name, cocktail);
+When("the user searches for cocktail {string}", async (cocktail) => {
+  await page.fill(nameSelector, cocktail);
 });
 
-Then("the result should be empty", async function () {
-  const locator = await page.locator(notMatched);
+Then("the result should be empty", async () => {
+  const locator = await page.locator(notMatchedSelector);
   await expect(locator).toBeVisible();
 });
 
 Then("the user should see the details of cocktail {string}", async function (cocktail) {
-    const locator = await page.locator(cocktailName);
-    await expect(locator).toHaveText(cocktail, { ignoreCase: true });
+  const locator = await page.locator(cocktailNameSelector);
+  await expect(locator).toHaveText(cocktail, { ignoreCase: true });
 });

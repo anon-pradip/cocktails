@@ -1,26 +1,22 @@
 const { When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
+const DetailsPage = require("../pageObjects/detailsPage");
 
-const details = '//a[@href="/cocktail/17253"]';
+const detailsSelector = '//a[@href="/cocktail/17253"]';
 
-When("the user navigates to details page of a cocktail {string}", async function (cocktail) {
-    await page.click(details);
+const detailsPage = new DetailsPage();
+
+When("the user navigates to details page of a cocktail {string}", async (cocktail) => {
+  await page.click(detailsSelector);
 });
 
-Then("the user should see the details of the cocktail", async function (dataTable) {
-  const cocktailName= await page.innerText('//div[1]/h2[contains(@class, "font-semibold")]')
-  const category= await page.innerText('//div[2]/h2[contains(@class, "font-semibold")]')
-  const info= await page.innerText('//div[3]/h2[contains(@class, "font-semibold")]')
-  const glass= await page.innerText('//div[4]/h2[contains(@class, "font-semibold")]')
-  const instructions= await page.innerText('//div[5]/h2[contains(@class, "font-semibold")]')
-  const ingredients= await page.innerText('//div[6]/h2[contains(@class, "font-semibold")]')
-
+Then("the user should see the details of the cocktail", async (dataTable) => {
+  const titles = await detailsPage.getText()
   const expectedData = dataTable.hashes();
-
-  expect(cocktailName).toEqual(expectedData[0].Name);
-  expect(category).toEqual(expectedData[0].Category);
-  expect(info).toEqual(expectedData[0].Info);
-  expect(glass).toEqual(expectedData[0].Glass);
-  expect(instructions).toEqual(expectedData[0].Intructions);
-  expect(ingredients).toEqual(expectedData[0].Ingredients);
+  expect(titles[0]).toEqual(expectedData[0].Name);
+  expect(titles[1]).toEqual(expectedData[0].Category);
+  expect(titles[2]).toEqual(expectedData[0].Info);
+  expect(titles[3]).toEqual(expectedData[0].Glass);
+  expect(titles[4]).toEqual(expectedData[0].Intructions);
+  expect(titles[5]).toEqual(expectedData[0].Ingredients);
 });
