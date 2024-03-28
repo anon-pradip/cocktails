@@ -5,6 +5,8 @@ Feature: Get cocktail details
 
 
     Scenario: details are loaded
-        Given the user has navigated to the home page
-        When the user navigates to details page of a cocktail
-        Then the user should see the details of the cocktail
+        Given user "admin" has navigated to the home page
+        When user "admin" navigates to details page of a cocktail "Paloma"
+        Then user "admin" should see the details of the cocktail
+            | Name   | Category | Info      | Glass         | Intructions                       | Ingredients            |
+            | Paloma | Cocktail | Alcoholic | Collins glass | Stir together and serve over ice. | Grape Soda, Tequila, , |
