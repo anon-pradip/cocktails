@@ -1,17 +1,14 @@
 {
-  "name": "cocktails",
-  "private": true,
-  "version": "0.0.0",
-  "type": "commonjs",
+  "name": "tests",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test:e2e": "cucumber-js --require cucumber.conf.js --require e2e/stepDefinitions/*.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e": "cucumber-js --require cucumber.conf.js --require e2e/stepDefinitions/**/*.js --format @cucumber/pretty-formatter"
   },
-  "dependencies": {},
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.3.1",
+    "@cucumber/cucumber": "^7.3.1",
     "@cucumber/pretty-formatter": "^1.0.0",
     "@playwright/test": "^1.42.1",
     "playwright": "^1.42.1"
