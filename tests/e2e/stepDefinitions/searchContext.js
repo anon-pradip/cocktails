@@ -19,10 +19,12 @@ When("the user searches for cocktail {string}", async (cocktail) => {
 
 Then("the result should be empty", async () => {
   const locator = await page.locator(notMatchedSelector);
+  await locator.waitFor();
   await expect(locator).toBeVisible();
 });
 
 Then("the user should see the details of cocktail {string}", async function (cocktail) {
   const locator = await page.locator(cocktailNameSelector);
+  await locator.waitFor();
   await expect(locator).toHaveText(cocktail, { ignoreCase: true });
 });
