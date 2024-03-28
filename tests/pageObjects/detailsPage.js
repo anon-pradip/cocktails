@@ -15,14 +15,13 @@ class DetailsPage {
 
   async navigateToHomePage() {
     await page.goto(this.homeUrl);
-    expect(page.url()).toBe("http://localhost:8080/");
   }
 
   async navigateToDetailsPage() {
     await page.click(this.detailsButtonSelector);
   }
 
-  async compareData(dataTable) {
+  async extractDataFromPage() {
     // Extracting data from the webpage
     const cocktailName = await page.innerText(this.cocktailNameSelector);
     const category = await page.innerText(this.categorySelector);
@@ -31,14 +30,14 @@ class DetailsPage {
     const instructions = await page.innerText(this.instructionsSelector);
     const ingredients = await page.innerText(this.ingredientsSelector);
 
-    const expectedData = dataTable.hashes();
-    //  //  Asserting the retrieved data with the expected values
-    expect(cocktailName).toEqual(expectedData[0].Name);
-    expect(category).toEqual(expectedData[0].Category);
-    expect(info).toEqual(expectedData[0].Info);
-    expect(glass).toEqual(expectedData[0].Glass);
-    expect(instructions).toEqual(expectedData[0].Intructions);
-    expect(ingredients).toEqual(expectedData[0].Ingredients);
+    return {
+      cocktailName,
+      category,
+      info,
+      glass,
+      instructions,
+      ingredients
+    };
   }
 }
 module.exports = { DetailsPage };

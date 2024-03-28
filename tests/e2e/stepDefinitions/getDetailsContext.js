@@ -7,6 +7,7 @@ const detailsPage = new DetailsPage();
 
 Given("the user has navigated to home page", async function () {
   await detailsPage.navigateToHomePage();
+  expect(page.url()).toBe("http://localhost:8080/");
 });
 
 When(
@@ -17,5 +18,14 @@ When(
 );
 
 Then("the result should match the following data", async function (dataTable) {
-  await detailsPage.compareData(dataTable);
+  const extractedData = await detailsPage.extractDataFromPage();
+  const expectedData = dataTable.hashes();
+
+  // Asserting the retrieved data with the expected values
+  expect(extractedData.cocktailName).toEqual(expectedData[0].Name);
+  expect(extractedData.category).toEqual(expectedData[0].Category);
+  expect(extractedData.info).toEqual(expectedData[0].Info);
+  expect(extractedData.glass).toEqual(expectedData[0].Glass);
+  expect(extractedData.instructions).toEqual(expectedData[0].Intructions);
+  expect(extractedData.ingredients).toEqual(expectedData[0].Ingredients);
 });
