@@ -3,11 +3,11 @@ const { expect } = require("@playwright/test");
 
 const details = '//a[@href="/cocktail/17253"]';
 
-When("user {string} navigates to details page of a cocktail {string}", async function (admin, cocktail) {
+When("the user navigates to details page of a cocktail {string}", async function (cocktail) {
     await page.click(details);
 });
 
-Then("user {string} should see the details of the cocktail", async function (admin, dataTable) {
+Then("the user should see the details of the cocktail", async function (dataTable) {
   const cocktailName= await page.innerText('//div[1]/h2[contains(@class, "font-semibold")]')
   const category= await page.innerText('//div[2]/h2[contains(@class, "font-semibold")]')
   const info= await page.innerText('//div[3]/h2[contains(@class, "font-semibold")]')

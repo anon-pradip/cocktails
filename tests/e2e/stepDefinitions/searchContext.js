@@ -4,16 +4,17 @@ const { expect } = require("@playwright/test");
 const url = "http://localhost:8080/";
 const home = '//nav/div[1]/a[@href="/"]';
 const name = "#name";
-const notMatched = "//div/h2";
+// const notMatched = "//div/h2"; 
+const notMatched = 'div>h2' 
 const cocktailName = "//div/div[last()]/h1";
 
-Given("user {string} has navigated to the home page", async function (admin) {
+Given("the user has navigated to the home page", async function () {
   await page.goto(url);
   const locator = await page.locator(home);
   await expect(locator).toBeVisible();
 });
 
-When("user {string} searches for cocktail {string}", async function (admin, cocktail) {
+When("the user searches for cocktail {string}", async function (cocktail) {
   await page.fill(name, cocktail);
 });
 
@@ -22,7 +23,7 @@ Then("the result should be empty", async function () {
   await expect(locator).toBeVisible();
 });
 
-Then("user {string} should see the details of cocktail {string}", async function (admin, cocktail) {
+Then("the user should see the details of cocktail {string}", async function (cocktail) {
     const locator = await page.locator(cocktailName);
     await expect(locator).toHaveText(cocktail, { ignoreCase: true });
 });
