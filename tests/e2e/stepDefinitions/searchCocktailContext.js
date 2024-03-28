@@ -19,7 +19,7 @@ When(
 );
 
 Then("the user should see cocktail {string}", async function (cocktailName) {
-  const locator = await page.locator(resultFound);
+  const locator = await page.waitForSelector(resultFound);
   expect(locator).toBeVisible();
 });
 
@@ -32,6 +32,6 @@ When(
 );
 
 Then("the result should be empty", async function () {
-  const locator = await page.locator(resultNotFound);
+  const locator = await page.waitForSelector(resultNotFound);
   expect(locator).toBeVisible();
 });
