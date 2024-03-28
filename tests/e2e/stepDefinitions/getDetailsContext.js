@@ -5,7 +5,7 @@ const { expect } = require("@playwright/test");
 const url = "http://localhost:8080/";
 const detailsButtonSelector = 'a[href="/cocktail/13501"]';
 
-Given("user has navigated to home page", async function () {
+Given("the user has navigated to home page", async function () {
   await page.goto(url);
   expect(page.url()).toBe("http://localhost:8080/");
 });
