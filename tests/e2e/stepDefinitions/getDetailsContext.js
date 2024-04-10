@@ -16,6 +16,7 @@ When(
     await detailsPage.navigateToDetailsPage();
   }
 );
+//dummy comment
 
 Then("the result should match the following data", async function (dataTable) {
   const extractedData = await detailsPage.extractDataFromPage();
