@@ -2,6 +2,14 @@ name: compile and deploy
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths: // This will make the workflow run for below specific paths only and ignore rest of the files and folders
+      - ".github/workflows/ci.yml"
+      - "public/**"
+      - "src/**"
+      - "tests/**"
 
 env:
   NODE_VERSION: 18
