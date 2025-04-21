@@ -30,6 +30,12 @@ jobs:
       - name: Getting the dependencies
         run: npm install
 
+      - name: Run e2e tests
+        run: |
+          npm install
+          npm run test:e2e
+          working-directory: tests/
+
       - name: compile
         run: npm run build
           
