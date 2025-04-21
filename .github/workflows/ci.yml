@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-    paths: // This will make the workflow run for below specific paths only and ignores rest of files and folders
+    paths: // This will make the workflow run for below specific paths only
       - ".github/workflows/ci.yml"
       - "public/**"
       - "src/**"
