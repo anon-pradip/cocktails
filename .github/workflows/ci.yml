@@ -34,7 +34,7 @@ jobs:
         run: |
           npm install
           npm run test:e2e
-          working-directory: tests/
+        working-directory: tests/
 
       - name: compile
         run: npm run build
