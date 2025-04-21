@@ -9,7 +9,7 @@ import SingleCocktail from "./pages/SingleCocktail";
 const App = () => {
   return (
     <div className="min-h-screen bg-slate-200">
-      <BrowserRouter>
+      <BrowserRoute>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
