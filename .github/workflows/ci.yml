@@ -1,40 +1,27 @@
-name: test
+name: compile and deploy
 
 on:
-  pull_request:
-    branches:
-      - master
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 18
 
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - run: |
-          npm install
-          npm run lint
 
-  ui-test:
-    needs: eslint
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Getting the code
+        uses: actions/checkout@v4.2.2
+
+      - name: setup nodejs
+        uses: actions/setup-node@v3.9.1
         with:
-          node-version: 18
-      - name: run-cocktail
-        run: |
-          npm install
-          npm run dev &
-      - name: run-ui-test
-        working-directory: tests
-        run: |
-          npm install
-          npx playwright install chromium
-          npm run test:e2e
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Getting the dependencies
+        run: npm install
+
+      - name: compile
+        run: npm run build
+          
