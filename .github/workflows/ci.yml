@@ -34,7 +34,7 @@ jobs:
         run: |
           npm install
           npx playwright install chromium
-          npm run test:e2e
+          npm run test:e2e e2e/features
         working-directory: tests/
 
       - name: compile
