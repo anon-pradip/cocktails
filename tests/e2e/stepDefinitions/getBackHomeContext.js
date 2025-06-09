@@ -1,7 +1,7 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
 
-Given("user is on the details page of a cocktail {string}", async function() {
+Given("user is on the details page of a cocktail {string}", async function(cocktailId) {
   await page.goto("http://localhost:8081/cocktail/17222");
   await expect(page.url()).toBe("http://localhost:8081/cocktail/17222");
   const locator = await page.locator(
