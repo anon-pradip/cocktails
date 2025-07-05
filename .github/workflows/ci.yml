@@ -44,3 +44,9 @@ jobs:
 
       - name: compile
         run: npm run build
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: build # Name of the artifact
+          path: dist # Path to the file or directory to upload (where the build was created)
