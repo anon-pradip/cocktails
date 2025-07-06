@@ -16,6 +16,8 @@ env:
 
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
@@ -45,8 +47,18 @@ jobs:
       - name: compile
         run: npm run build
 
-      - name: Upload a Build Artifact
+      - name: Upload a Build Artifact # This is npt required for creating a release
         uses: actions/upload-artifact@v4.6.2
         with:
           name: build # Name of the artifact
           path: dist # Path to the file or directory to upload (where the build was created)
+      
+      - name: Zip # jThis is done just to use while in relese process
+        run: zip -r dist.zip dist
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.3.2
+        with:
+          files: dist.zip
+          body: "This is a release"
+          tag_name: ${{ github.ref_name }}
